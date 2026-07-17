@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 116, 139, 0.5);
+}
+
+/* Check effect animations */
+@keyframes check-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes check-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(234, 179, 8, 0);
+  }
+}
+
+@keyframes check-glow-dark {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(22, 163, 74, 0);
+  }
+}
+
+.animate-check-pop {
+  animation: check-pop 0.3s ease-out forwards;
+}
+
+.animate-check-glow {
+  animation: check-glow 2s ease-in-out infinite;
+}
+
+.animate-check-glow-dark {
+  animation: check-glow-dark 2s ease-in-out infinite;
+}
+
+/* Floating animation for background blobs */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Pulse glow animation */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 99, 247, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 99, 247, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 99, 247, 0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
