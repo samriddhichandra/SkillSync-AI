@@ -2,10 +2,11 @@
 
 Upload a resume and a job description and get an instant, AI-powered breakdown of matched skills, missing skills, a match percentage, and a hiring verdict with reasons.
 
-![Upload Screen](<public/Screenshot%202026-07-17%20213016.png>)
-![Results Screen](<public/Screenshot%202026-07-17%20213036.png>)
 ![Job Description Input](<public/Screenshot%202026-07-17%20213124.png>)
 ![Analysis Results](<public/Screenshot%202026-07-17%20213148.png>)
+
+![Upload Screen](<public/Screenshot%202026-07-17%20213016.png>)
+![Results Screen](<public/Screenshot%202026-07-17%20213036.png>)
 
 ## Overview
 
