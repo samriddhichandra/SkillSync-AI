@@ -2,32 +2,34 @@
 
 Upload a resume and a job description and get an instant, AI-powered breakdown of matched skills, missing skills, a match percentage, and a hiring verdict with reasons.
 
-![Upload Screen](docs/screenshot-upload.png)
-![Results Screen](docs/screenshot-results.png)
+![Upload Screen](<public/Screenshot%202026-07-17%20213016.png>)
+![Results Screen](<public/Screenshot%202026-07-17%20213036.png>)
+![Job Description Input](<public/Screenshot%202026-07-17%20213124.png>)
+![Analysis Results](<public/Screenshot%202026-07-17%20213148.png>)
 
-## 🚀 Overview
+## Overview
 
-AI Resume Analyzer is a modern web application that helps job seekers optimize their resumes for specific job postings. Using OpenAI's powerful language models, it analyzes resumes against job descriptions to provide actionable insights.
+AI Resume Analyzer is a modern web application that helps job seekers optimize their resumes for specific job postings. Using Groq's powerful language models (Llama 3.3-70b), it analyzes resumes against job descriptions to provide actionable insights.
 
-## ✨ Features
+## Features
 
-- **Drag & Drop Upload** - Support for PDF and DOCX resume files
-- **Flexible Job Description Input** - Upload PDF/DOCX/TXT files or paste text directly
-- **AI-Powered Analysis** - Two-pass analysis for technical skill extraction and hiring verdict
-- **Match Percentage** - Visual score ring showing compatibility with the job
-- **Detailed Insights** - Matched skills, missing skills, and personalized reasons
-- **Responsive Design** - Modern gradient UI with dark mode toggle
-- **Privacy Focused** - Files processed in memory, never stored on disk
+- Drag & Drop Upload - Support for PDF and DOCX resume files
+- Flexible Job Description Input - Upload PDF/DOCX/TXT files or paste text directly
+- AI-Powered Analysis - Two-pass analysis for technical skill extraction and hiring verdict
+- Match Percentage - Visual score ring showing compatibility with the job
+- Detailed Insights - Matched skills, missing skills, and personalized reasons
+- Responsive Design - Modern gradient UI with dark mode toggle
+- Privacy Focused - Files processed in memory, never stored on disk
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-| Component | Technology |
-|-----------|------------|
-| **Frontend** | React + Vite, TypeScript, TailwindCSS |
-| **Backend** | FastAPI, Python, OpenAI API |
-| **File Parsing** | pdfplumber, python-docx |
+| Component    | Technology                            |
+| ------------ | ------------------------------------- |
+| Frontend     | React + Vite, TypeScript, TailwindCSS |
+| Backend      | FastAPI, Python, Groq API             |
+| File Parsing | pdfplumber, python-docx               |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 AI-Resume-Analyzer/
@@ -47,13 +49,13 @@ AI-Resume-Analyzer/
 └── .gitignore
 ```
 
-## 📋 Prerequisites
+## Prerequisites
 
-- **Node.js** 18+ and npm
-- **Python** 3.10+
-- **OpenAI API Key** - Get one at [platform.openai.com](https://platform.openai.com/api-keys)
+- Node.js 18+ and npm
+- Python 3.10+
+- Groq API Key - Get one at [console.groq.com](https://console.groq.com/keys)
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 ### 1. Backend Setup
 
@@ -69,17 +71,17 @@ pip install -r requirements.txt
 
 # Copy and configure environment variables
 cp .env.example .env
-# Edit .env and set your OPENAI_API_KEY
+# Edit .env and set your GROQ_API_KEY
 ```
 
-**Environment Variables (`backend/.env`):**
+Environment Variables (backend/.env):
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `OPENAI_API_KEY` | Your OpenAI API key (required) | — |
-| `OPENAI_MODEL` | Model for extraction/verdict | `gpt-4.1-mini` |
-| `CORS_ORIGINS` | Allowed frontend origins | `http://localhost:5173,http://127.0.0.1:5173` |
-| `MAX_UPLOAD_MB` | Max file size in MB | `10` |
+| Variable      | Description                  | Default                                     |
+| ------------- | ---------------------------- | ------------------------------------------- |
+| GROQ_API_KEY  | Your Groq API key (required) | -                                           |
+| GROQ_MODEL    | Model for extraction/verdict | llama-3.3-70b-versatile                     |
+| CORS_ORIGINS  | Allowed frontend origins     | http://localhost:5173,http://127.0.0.1:5173 |
+| MAX_UPLOAD_MB | Max file size in MB          | 10                                          |
 
 ### 2. Frontend Setup
 
@@ -91,7 +93,7 @@ npm install
 # VITE_API_BASE_URL=http://localhost:8000
 ```
 
-## 🚀 Running the Application
+## Running the Application
 
 ### Start the Backend
 
@@ -100,7 +102,7 @@ cd backend
 uvicorn main:app --reload --port 8000
 ```
 
-API available at `http://localhost:8000` with interactive docs at `http://localhost:8000/docs`
+API available at http://localhost:8000 with interactive docs at http://localhost:8000/docs
 
 ### Start the Frontend
 
@@ -109,32 +111,32 @@ cd frontend
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser
+Open http://localhost:5173 in your browser
 
-## 📖 Usage
+## Usage
 
-1. Drag & drop (or browse to) a resume file — PDF or DOCX
+1. Drag & drop (or browse to) a resume file - PDF or DOCX
 2. Provide a job description via file upload (PDF/DOCX/TXT) or paste text
-3. Click **Analyze Resume**
+3. Click Analyze Resume
 4. Review the match percentage, verdict, matched skills, and missing skills
 
-## 🔌 API Reference
+## API Reference
 
-### `POST /analyze`
+### POST /analyze
 
 Analyzes a resume against a job description.
 
-**Request Body (`multipart/form-data`):**
+Request Body (multipart/form-data):
 
-| Field | Type | Required | Notes |
-|-------|------|----------|-------|
-| `resume` | file | yes | PDF or DOCX |
-| `job_description` | file | no* | PDF, DOCX or TXT |
-| `job_description_text` | string | no* | Raw pasted text |
+| Field                | Type   | Required | Notes            |
+| -------------------- | ------ | -------- | ---------------- |
+| resume               | file   | yes      | PDF or DOCX      |
+| job_description      | file   | no*      | PDF, DOCX or TXT |
+| job_description_text | string | no*      | Raw pasted text  |
 
-*Either `job_description` or `job_description_text` must be provided.
+*Either job_description or job_description_text must be provided.
 
-**Success Response (200):**
+Success Response (200):
 
 ```json
 {
@@ -150,11 +152,12 @@ Analyzes a resume against a job description.
 }
 ```
 
-**Error Responses:**
-- `400` - Invalid/empty files or missing job description
-- `502` - OpenAI API failure or malformed data
+Error Responses:
 
-## 🏗️ Production Build
+- 400 - Invalid/empty files or missing job description
+- 502 - Groq API failure or malformed data
+
+## Production Build
 
 ```bash
 # Frontend
@@ -166,14 +169,14 @@ cd backend
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-Serve `frontend/dist` with any static host (Vercel, Netlify, Nginx) and configure `VITE_API_BASE_URL` to point to your deployed backend.
+Serve frontend/dist with any static host (Vercel, Netlify, Nginx) and configure VITE_API_BASE_URL to point to your deployed backend.
 
-## 🔒 Privacy & Security
+## Privacy & Security
 
 - All uploaded files are processed in memory and never written to disk
 - No data is stored or logged
 - Scanned/image-only PDFs without extractable text will return an error (OCR not included)
 
-## 📄 License
+## License
 
 MIT License - Feel free to use and modify for your needs.
